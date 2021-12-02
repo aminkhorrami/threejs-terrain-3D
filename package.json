@@ -1,0 +1,22 @@
+{
+	"name": "threejs-starter-kit",
+	"version": "1.0.0",
+	"description": "Starter kit alongside with webpack",
+	"scripts": {
+		"build": "webpack --config ./bundler/webpack.prod.js",
+		"start": "webpack serve --config ./bundler/webpack.dev.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/aminkhorrami/threejs-starter-kit.git"
+	},
+	"keywords": [
+		"threejs"
+	],
+	"author": "Amin Khorrami",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/aminkhorrami/threejs-starter-kit/issues"
+	},
+	"homepage": "https://github.com/aminkhorrami/threejs-starter-kit#readme"
+}
