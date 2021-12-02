@@ -1,1 +1,1 @@
-# ThreejsStarter Kit
+# Threejs Starter Kit
