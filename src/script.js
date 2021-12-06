@@ -3,6 +3,11 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "dat.gui";
 
+// Texture loader
+const loader = new THREE.TextureLoader();
+const texture = loader.load("/asset.jpeg");
+const height = loader.load("/height.jpeg");
+
 // Debug
 const gui = new dat.GUI();
 
@@ -17,7 +22,10 @@ const geometry = new THREE.PlaneBufferGeometry(3, 3, 64, 64);
 
 // Materials
 const material = new THREE.MeshStandardMaterial({
-	color: "red",
+	color: "gray",
+	map: texture,
+	displacementMap: height,
+	displacementScale: 0.1,
 });
 
 // Mesh
@@ -28,7 +36,7 @@ plane.rotation.x = 181;
 gui.add(plane.rotation, "x").min(0).max(600);
 
 // Lights
-const pointLight = new THREE.PointLight(0xffffff, 2);
+const pointLight = new THREE.PointLight(0xa3d2c0, 2);
 pointLight.position.x = 2;
 pointLight.position.y = 3;
 pointLight.position.z = 4;
@@ -37,6 +45,12 @@ scene.add(pointLight);
 gui.add(pointLight.position, "x");
 gui.add(pointLight.position, "y");
 gui.add(pointLight.position, "z");
+
+const col = { color: "#00ff00" };
+
+gui.addColor(col, "color").onChange(() => {
+	pointLight.color.set(col.color);
+});
 
 /**
  * Sizes
@@ -98,7 +112,7 @@ const tick = () => {
 	const elapsedTime = clock.getElapsedTime();
 
 	// Update objects
-	// sphere.rotation.y = 0.5 * elapsedTime;
+	//plane.rotation.z = 0.5 * elapsedTime;
 
 	// Update Orbital Controls
 	// controls.update()
